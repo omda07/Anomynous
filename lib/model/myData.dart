@@ -7,15 +7,15 @@ class MyData {
     if (json['result'] != null) {
       result = <Result>[];
       json['result'].forEach((v) {
-        result!.add(new Result.fromJson(v));
+        result!.add(Result.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
-    if (this.result != null) {
-      data['result'] = this.result!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    if (result != null) {
+      data['result'] = result!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -34,14 +34,14 @@ class Result {
 
   Result(
       {this.id,
-        this.isActive,
-        this.price,
-        this.company,
-        this.picture,
-        this.buyer,
-        this.tags,
-        this.status,
-        this.registered});
+      this.isActive,
+      this.price,
+      this.company,
+      this.picture,
+      this.buyer,
+      this.tags,
+      this.status,
+      this.registered});
 
   Result.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -56,16 +56,16 @@ class Result {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['isActive'] = this.isActive;
-    data['price'] = this.price;
-    data['company'] = this.company;
-    data['picture'] = this.picture;
-    data['buyer'] = this.buyer;
-    data['tags'] = this.tags;
-    data['status'] = this.status;
-    data['registered'] = this.registered;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['id'] = id;
+    data['isActive'] = isActive;
+    data['price'] = price;
+    data['company'] = company;
+    data['picture'] = picture;
+    data['buyer'] = buyer;
+    data['tags'] = tags;
+    data['status'] = status;
+    data['registered'] = registered;
     return data;
   }
 }
