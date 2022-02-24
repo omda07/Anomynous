@@ -4,6 +4,11 @@ import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 
 import '../model/myData.dart';
+class ListOfMap{
+ late String date;
+ late int numOfOrders;
+ ListOfMap(this.date,this.numOfOrders);
+}
 
 class MyHomePageProvider extends ChangeNotifier {
   MyData? data;
@@ -11,7 +16,11 @@ class MyHomePageProvider extends ChangeNotifier {
   int returnCount = 0;
   double averagePrice = 0.0;
   String? average;
-
+  DateTime? tempDate;
+  List<String> z = [];
+  var map = {};
+  List<Map<String,dynamic>> listMap =[];
+  List<ListOfMap>? listData ;
   Future getData(context) async {
     // You can call an API to get data, once we've the data from API or any other flow... Following part would always be the same.
     // We forgot about one more important part .. lets do that first
@@ -64,11 +73,14 @@ class MyHomePageProvider extends ChangeNotifier {
     data = MyData.fromJson(mJson);
     //print(data!.result![0].price);
 
-    DateTime? tempDate;
-    List<DateTime> z = [];
-    List<int> counter = [];
+
+
     for (int i = 0; i < data!.result!.length; i++) {
-      //   String d=data!.result![i].registered!.replaceAll(" -02:00", '');
+
+      z.add(data!.result![i].registered!);
+
+
+      //   String d = data!.result![i].registered!.replaceAll(" -02:00", '');
       //   d = d.replaceAll("-", '');
       //   d = d.replaceAll(":", '');
       //  // String f=d.replaceAll(",", '');
@@ -76,16 +88,28 @@ class MyHomePageProvider extends ChangeNotifier {
       //   tempDate  =  DateTime.parse(d);
       //   String formattedTime = DateFormat.Hms().format(tempDate);
       //   if(formattedTime == formattedTime){
-      //    counter.add(1);
+      //
       //
       //   }
       // print(formattedTime);
-
+      //
       // z.add(formattedTime);
 
     }
-    print(counter);
-    print(z);
+    z.forEach((element) {
+      if(!map.containsKey(element)) {
+        map[element] = 1;
+
+      } else {
+        map[element] +=1;
+      }
+    });
+
+
+ listData=   map.entries.map( (entry) => ListOfMap(entry.key, entry.value)).toList();
+print("hhhhhhhhhhhhhhhhhhh${listData![0].date}");
+print(listData!.length.toDouble());
+    //print(map);
     notifyListeners(); // for callback to view
   }
 }

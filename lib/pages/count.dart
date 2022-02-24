@@ -14,7 +14,7 @@ class Count extends StatelessWidget {
         child: Consumer<MyHomePageProvider>(
           builder: (context, provider, child) {
             if (provider.data == null) {
-              provider.getData(context);
+              provider.getDataChart(context);
               return const Center(child: CircularProgressIndicator());
             }
             // when we have the json loaded... let's put the data into a data table widget

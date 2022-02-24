@@ -1,3 +1,4 @@
+import 'package:flapkap/pages/chart_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/homePage.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(),
+      home: ChartScreen(),
     );
   }
 }
