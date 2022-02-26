@@ -1,4 +1,4 @@
-package com.example.flapklap
+package com.example.flapkap
 
 import io.flutter.embedding.android.FlutterActivity
 
