@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                             : const Icon(Icons.cancel,
                             color: Colors.red),
                       ),
-                      // I want to display a green color icon when user is verified and red when unverified
+                      // I want to display a green color icon when buyer is active and red when not active
                       DataCell(Text(data.id!)),
                       DataCell(Text(data.buyer!)),
                       DataCell(Text(data.company!)),
@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                       DataCell(Text(data.tags.toString())),
                       DataCell(Text(data.registered!)),
                       DataCell(Text(data.status!)),
-                      // DataCell(Text(data.price!)),
+
                     ]))
                     .toList(),
               ),

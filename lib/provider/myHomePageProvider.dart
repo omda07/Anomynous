@@ -39,7 +39,6 @@ class MyHomePageProvider extends ChangeNotifier {
       // count number of returned orders
       if (data!.result![i].status == "RETURNED") {
         returnCount++;
-      
 
       }
       // remove $ from the price

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -12,7 +11,6 @@ class ChartScreen extends StatefulWidget {
 }
 
 class _ChartScreenState extends State<ChartScreen> {
-
   ListOfMap? listOfMap;
 
   @override
@@ -27,22 +25,21 @@ class _ChartScreenState extends State<ChartScreen> {
               return const Center(child: CircularProgressIndicator());
             }
             return SfCartesianChart(
+              primaryXAxis: CategoryAxis(),
 
-                primaryXAxis: CategoryAxis(),
-
-                // Enable tooltip
-                tooltipBehavior: TooltipBehavior(enable: true),
-                series: <ChartSeries<ListOfMap, String>>[
-
-                  LineSeries<ListOfMap, String>(
-                      dataSource: provider.listData!,
-                      xValueMapper: (ListOfMap sales, _) => sales.date,
-                      yValueMapper: (ListOfMap sales, _) => sales.numOfOrders,
-                      name: 'Orders',
-                      // Enable data label
-                      dataLabelSettings: const DataLabelSettings(isVisible: true),
-                  ),
-                ]);
+              // Enable tooltip
+              tooltipBehavior: TooltipBehavior(enable: true),
+              series: <ChartSeries<ListOfMap, String>>[
+                LineSeries<ListOfMap, String>(
+                  dataSource: provider.listData!,
+                  xValueMapper: (ListOfMap orders, _) => orders.date,
+                  yValueMapper: (ListOfMap orders, _) => orders.numOfOrders,
+                  name: 'Orders',
+                  // Enable data label
+                  dataLabelSettings: const DataLabelSettings(isVisible: true),
+                ),
+              ],
+            );
           },
         ),
       ),
